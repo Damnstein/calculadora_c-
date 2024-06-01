@@ -1,10 +1,11 @@
 using System;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
 namespace Calculadora {
     class Program {
         static void Main(string[] args){
 
-            Console.WriteLine("Ingresa el numero de la operacion para seleccionarla:");
+            Console.WriteLine("Ingresa el numero de la operación para seleccionarla:");
             Console.WriteLine("1- Suma");
             Console.WriteLine("2- Resta");
             Console.WriteLine("3- Multiplicacion");
@@ -16,19 +17,24 @@ namespace Calculadora {
                 Console.WriteLine("Entrada no válida.");
                 return;
             }
+            
+            int numUno = 0;
+            int numDos = 0;
 
-            Console.WriteLine("Ingresa el primer número de la operación.");
-            string entradaNumUno = Console.ReadLine();
-            if (!int.TryParse(entradaNumUno, out int numUno)){
-                Console.WriteLine("Entrada no válida.");
-                return;
-            }
+            if(eleccionNum != 5){
+                Console.WriteLine("Ingresa el primer número de la operación.");
+                string entradaNumUno = Console.ReadLine();
+                if (!int.TryParse(entradaNumUno, out numUno)){
+                    Console.WriteLine("Entrada no válida.");
+                    return;
+                }
 
-            Console.WriteLine("Ingresa el segundo número de la operación.");
-            string entradaNumDos = Console.ReadLine();
-            if (!int.TryParse(entradaNumDos, out int numDos)){
-                Console.WriteLine("Entrada no válida.");
-                return;
+                Console.WriteLine("Ingresa el segundo número de la operación.");
+                string entradaNumDos = Console.ReadLine();
+                if (!int.TryParse(entradaNumDos, out numDos)){
+                    Console.WriteLine("Entrada no válida.");
+                    return;
+                }
             }
 
             switch (eleccionNum){
