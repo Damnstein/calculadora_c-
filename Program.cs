@@ -3,13 +3,14 @@ using System;
 namespace Calculadora {
     class Program {
         static void Main(string[] args){
-            int cero = 0;
 
             Console.WriteLine("Ingresa el numero de la operacion para seleccionarla:");
             Console.WriteLine("1- Suma");
             Console.WriteLine("2- Resta");
             Console.WriteLine("3- Multiplicacion");
             Console.WriteLine("4- Division");
+            Console.WriteLine("5- Porcentaje");
+
             string entradaOperacion = Console.ReadLine();
             if (!int.TryParse(entradaOperacion, out int eleccionNum)){
                 Console.WriteLine("Entrada no válida.");
@@ -41,6 +42,7 @@ namespace Calculadora {
                     Console.WriteLine($"El resultado de {numUno} * {numDos}, es {multiplicacion(numUno,numDos)}.");
                     break;
                 case 4:
+                    int cero = 0;
                     if(numDos == cero){
                         Console.Write($"Error: No es posible realizar divisiones por cero.");
                     }
@@ -48,11 +50,27 @@ namespace Calculadora {
                     Console.WriteLine($"El resultado de {numUno} / {numDos}, es {division(numUno,numDos)}.");
                     }
                     break;
+                case 5:
+                    Console.WriteLine("Ingresa el número base.");
+                    string entradaNumBase = Console.ReadLine();
+                    if (!int.TryParse(entradaNumBase, out int numBase)){
+                        Console.WriteLine("Entrada no válida.");
+                        return;
+                    }
+                    Console.WriteLine("Ingresa el porcentaje a calcular.");
+                    string entradaPorcentaje = Console.ReadLine();
+                    if (!int.TryParse(entradaPorcentaje, out int porcentaje)){
+                        Console.WriteLine("Entrada no válida.");
+                        return;
+                    }
+                    double resultadoPorcentaje = calcularPorcentaje(numBase,porcentaje);
+                    Console.WriteLine($"El {porcentaje}% de {numBase}, es {resultadoPorcentaje}.");
+                    break;
                 default:
                     Console.WriteLine($"El valor especificado no es válido: {eleccionNum}");
                     break;
             }
-            
+
             static int suma(int a, int b){
                 return a + b;
             }
@@ -64,6 +82,11 @@ namespace Calculadora {
             }
             static int division(int a, int b){
                 return a / b;
+            }
+            static double calcularPorcentaje(int numBase, int porcentaje){
+                double porcentajeDecimal = (double)porcentaje / 100;
+                double resultado = numBase * porcentajeDecimal;
+                return resultado;
             }
         }
     }
