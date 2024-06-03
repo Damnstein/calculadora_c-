@@ -1,0 +1,24 @@
+.main {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(243 243 243);
+    display: flex;
+    justify-content: center;
+}
+.contenedorCalc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.contenedorBotones {
+    display: flex;
+    flex-direction: row;
+}
+.fila {
+    display: flex;
+}
+.columna {
+    display: flex;
+    flex-direction: column;
+}
